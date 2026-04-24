@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self'; font-src 'self';">
+    <title>Bilibili 短链转长链工具</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header-container">
+            <h1>B站短链转长链</h1>
+            <select id="themeSelect" class="theme-select">
+                <option value="auto">跟随系统</option>
+                <option value="light">浅色模式</option>
+                <option value="dark">深色模式</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <textarea id="urlInput" placeholder="请输入B站链接，每行一个，支持批量转换"></textarea>
+            <button id="convertBtn">批量转换</button>
+            <div class="tip">提示：勾选结果后可复制选中，支持多选</div>
+        </div>
+        
+        <div id="loading" class="loading">正在转换中...</div>
+        <div id="progressBar" class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+        <div id="stats" class="stats"></div>
+        <div id="error" class="error"></div>
+        
+        <div id="result" class="result">
+            <div class="result-box" id="resultContent"></div>
+            <div class="btn-group">
+                <button class="copy-btn" id="copySelectedBtn">复制选中</button>
+                <button class="copy-all-btn" id="copyAllBtn">复制全部</button>
+                <button class="clear-btn" id="clearBtn">清空</button>
+            </div>
+        </div>
+        
+        <div class="intro">
+            <h3>使用说明与功能介绍</h3>
+            <p><strong>如何使用：</strong>你可以直接粘贴 B 站 App 里复制出的一大串包含文字的分享文案，工具会自动从中提取 <code>b23.tv</code> 短链。支持多行批量转换。</p>
+            <p><strong>支持处理：</strong>不仅能转换 <code>b23.tv</code> 短链为真实长链，还支持直接粘贴带有追踪参数的 <code>bilibili.com</code> 链接，自动清洗掉 <code>spm_id_from</code>、<code>vd_source</code>、<code>timestamp</code> 等隐私追踪参数。</p>
+            <p><strong>状态说明：</strong>转换结果会用颜色区分：<span class="status-success-text">绿色</span>表示成功（短链转换或参数清洗），<span class="status-warning-text">橙色</span>表示链接已失效或被拦截，<span class="status-error-text">红色</span>表示解析出错。勾选复选框可多选，点击"复制选中"仅复制勾选的条目，"复制全部"则复制所有成功的结果。</p>
+        </div>
+    </div>
+
+    <script src="/app.js"></script>
+</body>
+</html>

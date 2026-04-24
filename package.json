@@ -1,0 +1,11 @@
+{
+  "name": "bilibili-url-converter",
+  "version": "1.0.0",
+  "description": "Bilibili short link to long link converter for Cloudflare Pages",
+  "scripts": {
+    "dev": "wrangler pages dev public"
+  },
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}
